@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Biblioteca Comunitária</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+    <div class="container">
+
+        <h1>📚 Biblioteca Comunitária</h1>
+
+        <form id="livroForm">
+
+            <input
+                type="text"
+                id="titulo"
+                placeholder="Título"
+                required
+            >
+
+            <input
+                type="text"
+                id="autor"
+                placeholder="Autor"
+                required
+            >
+
+            <button type="submit">
+                Cadastrar
+            </button>
+
+        </form>
+
+        <hr>
+
+        <h2>Livros</h2>
+
+        <div id="listaLivros"></div>
+
+    </div>
+
+    <script src="/static/script.js"></script>
+
+</body>
+</html>

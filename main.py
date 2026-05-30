@@ -1,7 +1,25 @@
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 
+from fastapi.templating import Jinja2Templates
+from fastapi.staticfiles import StaticFiles
+from fastapi import Request
+
+from pydantic import BaseModel
+
+
 app = FastAPI()
+
+app.mount("/static", StaticFiles(directory="static"), name="static")
+
+templates = Jinja2Templates(directory="templates")
+
+@app.get("/")
+def pagina_inicial(request: Request):
+    return templates.TemplateResponse(
+        request=request,
+        name="index.html"
+    )
 
 class Livro(BaseModel):
     titulo: str
@@ -40,10 +58,6 @@ livros = [
     }
 ]
 
-# HOME
-@app.get("/")
-def home():
-    return {"mensagem": "API Biblioteca Comunitária"}
 
 # LISTAR TODOS OS LIVROS
 @app.get("/livros")
